@@ -20,12 +20,13 @@ function GameObject(attributes) {
   this.createdAt = attributes.createdAt;
   this.name = attributes.name;
   this.dimensions = attributes.dimensions;
-}
-
-GameObject.prototype = Object.create(GameObject.prototype);
-GameObject.prototype.destroy = function() {
+  this.destroy = function() {
     return `${this.name} was removed from the game.`;
   };
+}
+
+// GameObject.prototype = Object.create(GameObject.prototype);
+
 
 /*
   === CharacterStats ===
@@ -35,11 +36,11 @@ GameObject.prototype.destroy = function() {
 */
 
 function CharacterStats(charAttrs) {
+  GameObject.call(this, charAttrs)
   this.healthPoints = charAttrs.healthPoints;
-  GameObject.call(this.attributes);
 }
 
-CharacterStats.prototype.destroy = Object.create(GameObject.prototype);
+CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function() {
     return `${this.name} took damage.`
   };
@@ -55,11 +56,12 @@ CharacterStats.prototype.takeDamage = function() {
 */
 
 function Humanoid(human) {
-  this.team = human.team;
-  this.weapons = human.weapons;
-  this.language = human.language;
-  GameObject.call(this.attributes);
-  CharacterStats.call(this.attributes);
+  GameObject.call(attributes);
+  // this.team = human.team;
+  // this.weapons = human.weapons;
+  // this.language = human.language;
+ 
+  // CharacterStats.call(this, charAttrs);
 }
 
 Humanoid.prototype.destroy = Object.create(CharacterStats.prototype);
