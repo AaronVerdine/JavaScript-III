@@ -35,15 +35,15 @@ nameObj.fullName('Welcom to 355 Toyota!');
 
 // Principle 3
 function CarSounds(sound) {
-    this.sound = "Vroooooom";
+    this.sound = sound;
     this.carRevs = function() {
         console.log(this.sound);
         console.log(this);
     };
 }
 
-const dodge = new CarSounds('pontiac');
-const pontiac = new CarSounds('dodge');
+const dodge = new CarSounds('glugglug');
+const pontiac = new CarSounds('vroom');
 
 dodge.carRevs();
 
